@@ -1,0 +1,25 @@
+---
+- name: Configure NGINX on EC2
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: Ensure NGINX is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Copy custom index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html

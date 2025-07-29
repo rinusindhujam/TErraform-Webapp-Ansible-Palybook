@@ -1,0 +1,2 @@
+[webservers]
+65.0.180.29 ansible_user=ubuntu ansible_ssh_private_key_file=./Terra_Key.pem
